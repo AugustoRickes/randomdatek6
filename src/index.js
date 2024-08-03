@@ -5,7 +5,7 @@
  * @returns {Date} - data randomica
  */
 
-function randomDate(start, end) {
+export function randomDate(start, end) {
     let startTimestamp = start.getTime();
     let endTimestamp = end.getTime();
 
@@ -13,22 +13,11 @@ function randomDate(start, end) {
 }
 
 /**
- * faz a formatação da data para YYYY-MM-DD HH:mm:ss
+ * faz a formatação da data para YYYY-MM-DD HH:mm
  * @param {Date} date - data para formatar
  * @returns {string} - data formatada como string
  */
-function  formatDateToDatetime(date) {
-    let year = date.getFullYear();
-    let month = String(date.getMonth() + 1).padStart(2, '0');
-    let day = String(date.getDate()).padStart(2, '0');
-    let hours = String(date.getHours()).padStart(2, '0');
-    let minutes = String(date.getMinutes()).padStart(2, '0');
-    let seconds = String(date.getSeconds()).padStart(2, '0');
+export function  formatDateToDatetime(date) {
 
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-}
-
-export default {
-    randomDate,
-    formatDateToDatetime
+    return date.toISOString().replace('T', ' ').slice(0, 16);
 }
